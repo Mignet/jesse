@@ -36,6 +36,9 @@ warnings.simplefilter(action='ignore', category=FutureWarning)
 # get the jesse directory
 JESSE_DIR = pkg_resources.resource_filename(__name__, '')
 
+# On Windows operating systems, it is necessary to explicitly declare support for the .js MIME type; otherwise, JavaScript files may fail to load, resulting in a blank (white) page in the browser.
+import mimetypes
+mimetypes.add_type('application/javascript', '.js')
 
 # load homepage
 @fastapi_app.get("/")
